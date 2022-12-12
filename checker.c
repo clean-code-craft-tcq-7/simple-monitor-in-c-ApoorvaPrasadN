@@ -44,14 +44,7 @@ if(chargeRate > 0.8) {
 }
 int get_OutOfRange_Status()
 {
-float temp = 25;
-float soc =70;
-float chargerate=0;
-   if((check_temperature_range(temp) == 1) && (check_StateOfCharge_range(soc) == 1)&&(check_Chargerate_range(chargerate) ==1))
-   { 
-   return 1;
-   }
-   return 0;  
+return 0;
 }
 int main() {
   assert(batteryIsOk()== E_NOT_OK);
