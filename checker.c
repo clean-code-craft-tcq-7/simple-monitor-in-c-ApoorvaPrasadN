@@ -4,7 +4,7 @@
 #define E_NOT_OK 0
 int batteryIsOk() 
 {
-  if(get_OutOfRange_Status() == 0);
+  if(get_OutOfRange_Status() == 0)
   return E_OK;
   else
   return E_NOT_OK;
