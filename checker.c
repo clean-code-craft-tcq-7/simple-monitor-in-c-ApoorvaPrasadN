@@ -47,5 +47,5 @@ int get_OutOfRange_Status()
 return 0;
 }
 int main() {
-  assert(batteryIsOk()== E_NOT_OK);
+  assert(batteryIsOk()== E_OK);
 }
