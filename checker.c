@@ -50,7 +50,7 @@ if(chargeRate > 0.8) {
 }
 void get_OutOfRange_Status_temprange()
 {
-  float temp = 46;
+  float temp = 20;
   if(check_temperature_range(temp) == 1)
   { 
     temperature_outrange =1;
