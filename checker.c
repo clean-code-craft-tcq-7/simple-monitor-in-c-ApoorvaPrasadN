@@ -8,7 +8,7 @@ int stateofCharge =0;
 int chargerate =0;
 int batteryIsOk() 
 {
-  if((temperature_outrange==1)||(chargerate==1)||(stateofCharge ==1))
+  if((temperature_outrange==1))
   {
   return E_NOT_OK;
   }
