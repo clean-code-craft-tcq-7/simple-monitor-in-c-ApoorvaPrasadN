@@ -4,7 +4,7 @@
 #define E_NOT_OK 0
 int batteryIsOk() 
 {
-  if(get_OutOfRange_Status() == 0)
+  if((get_OutOfRange_Status() == 0)||(get_OutOfRange_Status_stateofCharge() == 0) ||(get_OutOfRange_Status_ChargeRate()==0))
   return E_OK;
   else
   return E_NOT_OK;
@@ -42,8 +42,31 @@ if(chargeRate > 0.8) {
     return 0;
   }
 }
-int get_OutOfRange_Status()
+int get_OutOfRange_Status_temprange()
 {
+  float temp = 25;
+  if(check_temperature_range(temp) == 1)
+  { 
+    return 1;
+  }
+return 0;
+}
+int get_OutOfRange_Status_stateofCharge()
+{
+  float soc = 70;
+  if(check_StateOfCharge_range(soc) == 1)
+  { 
+    return 1;
+  }
+return 0;
+}
+int get_OutOfRange_Status_ChargeRate()
+{
+  float charge = 70;
+  if(check_Chargerate_range(charge) == 1)
+  { 
+    return 1;
+  }
 return 0;
 }
 int main() {
