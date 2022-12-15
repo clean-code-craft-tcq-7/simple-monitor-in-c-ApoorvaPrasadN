@@ -9,7 +9,7 @@ int chargerate =0;
 int outOfrange;
 int batteryIsOk() 
 {
-  if(outOfrange==3)
+  if((outOfrange==3)||(outOfrange==2)||(outOfrange==1))
   {
   return E_NOT_OK;
   }
