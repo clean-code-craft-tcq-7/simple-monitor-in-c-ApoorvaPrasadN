@@ -5,9 +5,10 @@
 int batteryIsOk() 
 {
   if((get_OutOfRange_Status() == 0)||(get_OutOfRange_Status_stateofCharge() == 0) ||(get_OutOfRange_Status_ChargeRate()==0))
-  return E_OK;
-  else
+  {
   return E_NOT_OK;
+  }
+  return E_OK;
 }
 int check_temperature_range(float temperature)
 {
