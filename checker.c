@@ -67,7 +67,7 @@ void get_OutOfRange_Status_stateofCharge()
 }
 void get_OutOfRange_Status_ChargeRate()
 {
-  float charge = 0.8;
+  float charge = 0.7;
   if(check_Chargerate_range(charge) == 1)
   { 
    chargerate =1;
