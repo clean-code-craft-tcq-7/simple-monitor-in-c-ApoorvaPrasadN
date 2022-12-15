@@ -9,11 +9,11 @@ int chargerate =0;
 int outOfrange;
 int batteryIsOk() 
 {
-  if((outOfrange==3)||(outOfrange==2)||(outOfrange==1))
+  if(outOfrange==0)
   {
-  return E_NOT_OK;
-  }
   return E_OK;
+  }
+  return E_NOT_OK;
 }
 int check_temperature_range(float temperature)
 {
