@@ -3,13 +3,13 @@
 #define E_OK     1
 #define E_NOT_OK 0
 
-int temperature_outrange =0;
-int stateofCharge =0;
-int chargerate =0;
-int outOfrange;
+int temperature_OutOfRange =0;
+int stateofCharge_OutOfRange =0;
+int chargerate_OutOfRange =0;
+int outOfrange_Overallstatus;
 int batteryIsOk() 
 {
-  if(outOfrange==0)
+  if(outOfrange_Overallstatus==0)
   {
   return E_OK;
   }
@@ -77,6 +77,6 @@ int main() {
   get_OutOfRange_Status_temprange();
   get_OutOfRange_Status_stateofCharge();
   get_OutOfRange_Status_ChargeRate();
-  outOfrange = (temperature_outrange + stateofCharge + chargerate);
+  outOfrange_Overallstatus = (temperature_OutOfRange + stateofCharge_OutOfRange + chargerate_OutOfRange);
   assert(batteryIsOk()== E_OK);
 }
