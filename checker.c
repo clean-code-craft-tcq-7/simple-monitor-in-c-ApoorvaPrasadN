@@ -53,7 +53,7 @@ void get_OutOfRange_Status_temprange()
   float temp = 20;
   if(check_temperature_range(temp) == 1)
   { 
-    temperature_outrange =1;
+    temperature_OutOfRange = 1;
   }
 
 }
@@ -62,7 +62,7 @@ void get_OutOfRange_Status_stateofCharge()
   float soc = 70;
   if(check_StateOfCharge_range(soc) == 1)
   { 
-    stateofCharge =1;
+    stateofCharge_OutOfRange = 1;
   }
 }
 void get_OutOfRange_Status_ChargeRate()
@@ -70,7 +70,7 @@ void get_OutOfRange_Status_ChargeRate()
   float charge = 0.7;
   if(check_Chargerate_range(charge) == 1)
   { 
-   chargerate =1;
+   chargerate_OutOfRange =1;
   }
 }
 int main() {
