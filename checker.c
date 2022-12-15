@@ -9,7 +9,7 @@ int chargerate =0;
 int outOfrange;
 int batteryIsOk() 
 {
-  if((outOfrange==3))
+  if(outOfrange==3)
   {
   return E_NOT_OK;
   }
@@ -78,5 +78,5 @@ int main() {
   get_OutOfRange_Status_stateofCharge();
   get_OutOfRange_Status_ChargeRate();
   outOfrange = (temperature_outrange + stateofCharge + chargerate);
-  assert(batteryIsOk()== E_NOT_OK);
+  assert(batteryIsOk()== E_OK);
 }
