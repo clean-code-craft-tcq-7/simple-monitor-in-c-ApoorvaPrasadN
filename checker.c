@@ -12,7 +12,6 @@ int batteryIsOk()
   {
   return E_NOT_OK;
   }
-  else if(
   return E_OK;
 }
 int check_temperature_range(float temperature)
