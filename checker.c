@@ -2,12 +2,17 @@
 #include <assert.h>
 #define E_OK     1
 #define E_NOT_OK 0
+
+int temperature_outrange =0;
+int stateofCharge =0;
+int chargerate =0;
 int batteryIsOk() 
 {
-  if((get_OutOfRange_Status() == 0)||(get_OutOfRange_Status_stateofCharge() == 0) ||(get_OutOfRange_Status_ChargeRate()==0))
+  if(get_OutOfRange_Status() == 0)
   {
   return E_NOT_OK;
   }
+  else if(
   return E_OK;
 }
 int check_temperature_range(float temperature)
@@ -43,33 +48,34 @@ if(chargeRate > 0.8) {
     return 0;
   }
 }
-int get_OutOfRange_Status_temprange()
+void get_OutOfRange_Status_temprange()
 {
   float temp = 25;
   if(check_temperature_range(temp) == 1)
   { 
-    return 1;
+    temperature_outrange =1;
   }
-return 0;
+
 }
-int get_OutOfRange_Status_stateofCharge()
+void get_OutOfRange_Status_stateofCharge()
 {
   float soc = 70;
   if(check_StateOfCharge_range(soc) == 1)
   { 
-    return 1;
+    stateofCharge =1;
   }
-return 0;
 }
-int get_OutOfRange_Status_ChargeRate()
+void get_OutOfRange_Status_ChargeRate()
 {
-  float charge = 70;
+  float charge = 0.8;
   if(check_Chargerate_range(charge) == 1)
   { 
-    return 1;
+   chargerate =1;
   }
-return 0;
 }
 int main() {
+  get_OutOfRange_Status_temprange();
+  get_OutOfRange_Status_stateofCharge();
+  get_OutOfRange_Status_ChargeRate();
   assert(batteryIsOk()== E_OK);
 }
