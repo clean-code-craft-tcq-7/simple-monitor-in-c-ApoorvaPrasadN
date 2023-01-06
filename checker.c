@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
-#define E_OK     1
-#define E_NOT_OK 0
+#define BATTERY_OK     1
+#define BATTERY_NOT_OK 0
 
 int temperature_OutOfRange = 0;
 int stateofCharge_OutOfRange = 0;
@@ -11,9 +11,9 @@ int batteryIsOk()
 {
   if(outOfrange_Overallstatus == 0)
   {
-  return E_OK;
+  return BATTERY_OK;
   }
-  return E_NOT_OK;
+  return BATTERY_NOT_OK;
 }
 int check_temperature_range(float temperature)
 {
@@ -78,5 +78,5 @@ int main() {
   get_OutOfRange_Status_stateofCharge();
   get_OutOfRange_Status_ChargeRate();
   outOfrange_Overallstatus = (temperature_OutOfRange + stateofCharge_OutOfRange + chargerate_OutOfRange);
-  assert(batteryIsOk()== E_OK);
+  assert(batteryIsOk()== BATTERY_OK);
 }
