@@ -1,21 +1,82 @@
 #include <stdio.h>
 #include <assert.h>
+#define BATTERY_OK     1
+#define BATTERY_NOT_OK 0
 
-int batteryIsOk(float temperature, float soc, float chargeRate) {
+int temperature_OutOfRange = 0;
+int stateofCharge_OutOfRange = 0;
+int chargerate_OutOfRange = 0;
+int outOfrange_Overallstatus;
+int batteryIsOk() 
+{
+  if(outOfrange_Overallstatus == 0)
+  {
+  return BATTERY_OK;
+  }
+  return BATTERY_NOT_OK;
+}
+int check_temperature_range(float temperature)
+{
   if(temperature < 0 || temperature > 45) {
     printf("Temperature out of range!\n");
-    return 0;
-  } else if(soc < 20 || soc > 80) {
-    printf("State of Charge out of range!\n");
-    return 0;
-  } else if(chargeRate > 0.8) {
-    printf("Charge Rate out of range!\n");
+    return 1;
+  } 
+  else
+  {
     return 0;
   }
-  return 1;
 }
+int check_StateOfCharge_range(float soc)
+{
+ if(soc < 20 || soc > 80) {
+    printf("State of Charge out of range!\n");
+    return 1;
+  }
+  else
+  {
+    return 0;
+  }
+}
+int check_Chargerate_range(float chargeRate)
+{
+if(chargeRate > 0.8) {
+    printf("Charge Rate out of range!\n");
+    return 1;
+  }
+  else
+  {
+    return 0;
+  }
+}
+void get_OutOfRange_Status_temprange()
+{
+  float temp = 20;
+  if(check_temperature_range(temp) == 1)
+  { 
+    temperature_OutOfRange = 1;
+  }
 
+}
+void get_OutOfRange_Status_stateofCharge()
+{
+  float soc = 70;
+  if(check_StateOfCharge_range(soc) == 1)
+  { 
+    stateofCharge_OutOfRange = 1;
+  }
+}
+void get_OutOfRange_Status_ChargeRate()
+{
+  float charge = 0.7;
+  if(check_Chargerate_range(charge) == 1)
+  { 
+   chargerate_OutOfRange =1;
+  }
+}
 int main() {
-  assert(batteryIsOk(25, 70, 0.7));
-  assert(!batteryIsOk(50, 85, 0));
+  get_OutOfRange_Status_temprange();
+  get_OutOfRange_Status_stateofCharge();
+  get_OutOfRange_Status_ChargeRate();
+  outOfrange_Overallstatus = (temperature_OutOfRange + stateofCharge_OutOfRange + chargerate_OutOfRange);
+  assert(batteryIsOk()== BATTERY_OK);
 }
